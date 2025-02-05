@@ -1,3 +1,4 @@
 class AppRoutesConstants {
-  static const String home = '/';
+  static const String StartScreen = '/';
+  static const String home = '/home';
 }

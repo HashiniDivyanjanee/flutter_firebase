@@ -16,6 +16,7 @@ class DataItemBloc extends Bloc<DataItemEvent, DataItemState> {
     on<EditDataEvent>(_editData);
   }
 
+// **Save** //
   Future<void> _saveData(
       SaveDataEvent event, Emitter<DataItemState> emit) async {
     emit(DataLoading());
@@ -28,6 +29,7 @@ class DataItemBloc extends Bloc<DataItemEvent, DataItemState> {
     }
   }
 
+// **Load** //
   Future<void> _loadData(
       LoadDataEvent event, Emitter<DataItemState> emit) async {
     emit(DataLoading());
@@ -40,6 +42,7 @@ class DataItemBloc extends Bloc<DataItemEvent, DataItemState> {
     }
   }
 
+// **Delete** //
   Future<void> _deleteData(
       DeleteDataEvent event, Emitter<DataItemState> emit) async {
     emit(DataLoading());
@@ -50,7 +53,8 @@ class DataItemBloc extends Bloc<DataItemEvent, DataItemState> {
       emit(DataError(e.toString()));
     }
   }
-
+  
+// **Update** //
   Future<void> _editData(
       EditDataEvent event, Emitter<DataItemState> emit) async {
     emit(DataLoading());
