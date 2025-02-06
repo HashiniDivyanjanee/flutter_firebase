@@ -15,7 +15,7 @@ class _StartScreenState extends State<StartScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 8), () {
       if (mounted) {
-        context.go('/home');
+        context.go('/login');
       }
     });
   }
