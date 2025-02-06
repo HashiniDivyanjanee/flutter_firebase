@@ -29,7 +29,7 @@ class Login extends StatelessWidget {
             ),
             Shimmer_Widget(),
             subTitle(
-              tiltle: 'Sign in to Continue',
+              title: 'Sign in to Continue',
             ),
             const SizedBox(
               height: 40,
@@ -68,7 +68,10 @@ class Login extends StatelessWidget {
                 callback: () {
                   GoRouter.of(context).pushNamed(AppRoutesConstants.home);
                 }),
-            subTitle(tiltle: "Don't have an account?"),
+                  const SizedBox(
+              height: 30,
+            ),
+            subTitle(title: "Don't have an account?"),
             textButton(
               text: "Sign up",
               callback: () {},

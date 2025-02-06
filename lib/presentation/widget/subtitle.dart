@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase/constant/themes.dart';
 
 class subTitle extends StatelessWidget {
-  final String tiltle;
+  final String title;
   const subTitle({
     super.key,
-    required this.tiltle,
+    required this.title,
   });
 
   @override
@@ -13,7 +13,7 @@ class subTitle extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Text(
-        tiltle,
+        title,
         style: TextStyle(
             color: AppThemes.SecondTextColor,
             fontSize: AppThemes.SecondaryFontSize),

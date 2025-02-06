@@ -28,7 +28,7 @@ class Login extends StatelessWidget {
               height: 40,
             ),
             Shimmer_Widget(),
-            subTitle(tiltle: 'Sign up to Continue',),
+            subTitle(title: 'Sign up to Continue',),
             const SizedBox(
               height: 40,
             ),
