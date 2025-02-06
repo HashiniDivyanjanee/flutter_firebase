@@ -21,12 +21,12 @@ class textButton extends StatelessWidget {
       child: Align(
         alignment: alignment,
         child: TextButton(
+          
             onPressed: callback,
             child: Text(
               text,
               style: TextStyle(
-                  color: color,
-                  fontSize: AppThemes.SecondaryFontSize),
+                  color: color, fontSize: AppThemes.SecondaryFontSize),
             )),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter_firebase/constant/assest_path.dart';
 import 'package:flutter_firebase/constant/themes.dart';
 import 'package:flutter_firebase/presentation/widget/bg_clip_path_widget.dart';
 import 'package:flutter_firebase/presentation/widget/buttons.dart';
+import 'package:flutter_firebase/presentation/widget/icon_with_button.dart';
 import 'package:flutter_firebase/presentation/widget/shimmer_widget.dart';
 import 'package:flutter_firebase/presentation/widget/subtitle.dart';
 import 'package:flutter_firebase/presentation/widget/text_button.dart';
@@ -25,14 +26,14 @@ class Login extends StatelessWidget {
               image: AssetImage(AssestPath.background),
             ),
             const SizedBox(
-              height: 40,
+              height: 30,
             ),
             Shimmer_Widget(),
             subTitle(
               title: 'Sign in to Continue',
             ),
             const SizedBox(
-              height: 40,
+              height: 20,
             ),
             TextFormFieldComponent(
               controller: nameController,
@@ -59,7 +60,7 @@ class Login extends StatelessWidget {
               color: AppThemes.SecondTextColor,
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             ButtonComponent(
                 buttonText: "LOGIN",
@@ -68,15 +69,29 @@ class Login extends StatelessWidget {
                 callback: () {
                   GoRouter.of(context).pushNamed(AppRoutesConstants.home);
                 }),
-                  const SizedBox(
-              height: 30,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                subTitle(title: "Don't have an account?"),
+                textButton(
+                  text: "Sign up",
+                  callback: () {
+                    GoRouter.of(context).pushNamed(AppRoutesConstants.sign_up);
+                  },
+                  alignment: Alignment.center,
+                ),
+              ],
             ),
-            subTitle(title: "Don't have an account?"),
-            textButton(
-              text: "Sign up",
-              callback: () {},
-              alignment: Alignment.center,
+            SizedBox(
+              height: 20,
             ),
+            subTitle(
+                title:
+                    "------------------------------------OR------------------------------------"),
+            SizedBox(
+              height: 20,
+            ),
+            button_with_icon(),
           ],
         ),
       ),

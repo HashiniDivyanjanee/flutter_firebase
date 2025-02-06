@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/bloc/data_item_bloc/data_item_bloc.dart';
 import 'package:flutter_firebase/presentation/screen/home.dart';
 import 'package:flutter_firebase/presentation/screen/login.dart';
+import 'package:flutter_firebase/presentation/screen/sign_up.dart';
 import 'package:flutter_firebase/presentation/screen/start_screen.dart';
 import 'package:flutter_firebase/repository/data_repository.dart';
 import 'package:flutter_firebase/routes/rout_cons.dart';
@@ -13,7 +14,7 @@ final GoRouter router = GoRouter(
       return const MaterialPage(
           child: Scaffold(
         body: Center(
-          child: Text("This Page is not Found!!"),
+          child: Text("This Page is not Found!"),
         ),
       ));
     },
@@ -38,6 +39,13 @@ final GoRouter router = GoRouter(
         path: '/login',
          pageBuilder: (context, state) {
           return MaterialPage(child: Login());
+        },
+      ),
+      GoRoute(
+        name: AppRoutesConstants.sign_up,
+        path: '/sign_up',
+         pageBuilder: (context, state) {
+          return MaterialPage(child: SignUp());
         },
       ),
     ]);

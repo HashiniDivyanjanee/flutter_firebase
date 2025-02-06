@@ -10,8 +10,8 @@ import 'package:flutter_firebase/presentation/widget/text_form_field.dart';
 import 'package:flutter_firebase/routes/rout_cons.dart';
 import 'package:go_router/go_router.dart';
 
-class Login extends StatelessWidget {
-  Login({super.key});
+class SignUp extends StatelessWidget {
+  SignUp({super.key});
 
   final nameController = TextEditingController();
   final pwController = TextEditingController();
@@ -68,7 +68,7 @@ class Login extends StatelessWidget {
               height: 30,
             ),
             ButtonComponent(
-                buttonText: "LOGIN",
+                buttonText: "SIGN UP",
                 textColor: Colors.white,
                 buttonColor: AppThemes.PrimaryColor,
                 callback: () {
