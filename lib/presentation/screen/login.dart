@@ -28,7 +28,7 @@ class Login extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Shimmer_Widget(),
+            Shimmer_Widget(text: 'Welcome Back!',),
             subTitle(
               title: 'Sign in to Continue',
             ),
@@ -69,19 +69,6 @@ class Login extends StatelessWidget {
                 callback: () {
                   GoRouter.of(context).pushNamed(AppRoutesConstants.home);
                 }),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                subTitle(title: "Don't have an account?"),
-                textButton(
-                  text: "Sign up",
-                  callback: () {
-                    GoRouter.of(context).pushNamed(AppRoutesConstants.sign_up);
-                  },
-                  alignment: Alignment.center,
-                ),
-              ],
-            ),
             SizedBox(
               height: 20,
             ),
@@ -91,7 +78,20 @@ class Login extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            button_with_icon(),
+            CustomIconButton(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                subTitle(title: "Don't have an account?"),
+                textButton(
+                  text: "Sign up",
+                  callback: () {
+                    GoRouter.of(context).pushNamed(AppRoutesConstants.sign_up);
+                  },
+                  alignment: Alignment.center, color: AppThemes.PrimaryColor,
+                ),
+              ],
+            ),
           ],
         ),
       ),

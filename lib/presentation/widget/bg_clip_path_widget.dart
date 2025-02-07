@@ -13,7 +13,7 @@ class BgClipPathWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipPath(
       child: Container(
-          height: 330,
+          height: 280,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: image,

@@ -3,6 +3,7 @@ import 'package:flutter_firebase/constant/assest_path.dart';
 import 'package:flutter_firebase/constant/themes.dart';
 import 'package:flutter_firebase/presentation/widget/bg_clip_path_widget.dart';
 import 'package:flutter_firebase/presentation/widget/buttons.dart';
+import 'package:flutter_firebase/presentation/widget/icon_with_button.dart';
 import 'package:flutter_firebase/presentation/widget/shimmer_widget.dart';
 import 'package:flutter_firebase/presentation/widget/subtitle.dart';
 import 'package:flutter_firebase/presentation/widget/text_button.dart';
@@ -25,12 +26,16 @@ class SignUp extends StatelessWidget {
               image: AssetImage(AssestPath.background),
             ),
             const SizedBox(
-              height: 40,
+              height: 20,
             ),
-            Shimmer_Widget(),
-            subTitle(title: 'Sign up to Continue',),
+            Shimmer_Widget(
+              text: 'Hello, Friend!',
+            ),
+            subTitle(
+              title: 'Sign up to Continue',
+            ),
             const SizedBox(
-              height: 40,
+              height: 20,
             ),
             TextFormFieldComponent(
               controller: nameController,
@@ -59,13 +64,8 @@ class SignUp extends StatelessWidget {
               obscureText: true,
               maxLines: 1,
             ),
-            textButton(
-              text: 'Foget Password?',
-              callback: () {},  alignment: Alignment.center,
-              color: AppThemes.SecondTextColor,
-            ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             ButtonComponent(
                 buttonText: "SIGN UP",
@@ -74,6 +74,27 @@ class SignUp extends StatelessWidget {
                 callback: () {
                   GoRouter.of(context).pushNamed(AppRoutesConstants.home);
                 }),
+            SizedBox(
+              height: 20,
+            ),
+            subTitle(
+                title:
+                    "------------------------------------OR------------------------------------"),
+            CustomIconButton(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                subTitle(title: "Already have an account?"),
+                textButton(
+                  text: "Sign In",
+                  color: AppThemes.PrimaryColor,
+                  callback: () {
+                    GoRouter.of(context).pushNamed(AppRoutesConstants.login);
+                  },
+                  alignment: Alignment.center,
+                ),
+              ],
+            ),
           ],
         ),
       ),

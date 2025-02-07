@@ -5,12 +5,12 @@ class textButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
   final AlignmentGeometry alignment;
-  final Color? color;
+  final Color color;
 
   const textButton(
       {super.key,
       required this.text,
-      this.color,
+      required this.color,
       required this.callback,
       required this.alignment});
 
