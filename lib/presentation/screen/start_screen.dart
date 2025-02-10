@@ -13,9 +13,9 @@ class _StartScreenState extends State<StartScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 8), () {
+    Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
-        context.go('/login');
+        context.go('/test1');
       }
     });
   }
