@@ -67,7 +67,7 @@ class SignUp extends StatelessWidget {
                     SnackBar(content: Text(state.message)),
                   );
                 } else if (state is AuthSuccess) {
-                  GoRouter.of(context).pushNamed(AppRoutesConstants.home);
+                  GoRouter.of(context).pushNamed(AppRoutesConstants.dashboard);
                 }
               },
               builder: (context, state) {
