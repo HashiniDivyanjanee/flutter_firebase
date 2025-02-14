@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/bloc/auth/auth_bloc.dart';
+import 'package:flutter_firebase/presentation/screen/home.dart';
 import 'package:flutter_firebase/routes/rout_cons.dart';
 import 'package:go_router/go_router.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignInScreen extends StatelessWidget {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sign Up')),
+      appBar: AppBar(title: Text('Sign In')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -20,7 +21,6 @@ class SignUpScreen extends StatelessWidget {
             TextField(
               controller: _emailController,
               decoration: InputDecoration(labelText: 'Email'),
-              keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(height: 10),
 
@@ -32,10 +32,11 @@ class SignUpScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Sign-Up Button
+            // Sign-In Button
             BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
                 if (state is AuthFailure) {
+                  // Show error message if sign-in fails
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
@@ -45,29 +46,30 @@ class SignUpScreen extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is AuthLoading) {
-                  return CircularProgressIndicator();
+                  return CircularProgressIndicator(); // Show loading indicator
                 }
                 return ElevatedButton(
                   onPressed: () {
+                    // Trigger the sign-in event
                     context.read<AuthBloc>().add(
-                          SignUpWithEmail(
+                          SignInWithEmail(
                             _emailController.text,
                             _passwordController.text,
                           ),
                         );
                   },
-                  child: Text('Sign Up'),
+                  child: Text('Sign In'),
                 );
               },
             ),
             SizedBox(height: 10),
 
-            // Link to Sign-In Screen
-            TextButton(
+            // Sign-In with Google Button
+            ElevatedButton(
               onPressed: () {
-                GoRouter.of(context).pushNamed(AppRoutesConstants.test2);
+                context.read<AuthBloc>().add(SignInWithGoogle());
               },
-              child: Text('Already have an account? Sign In'),
+              child: Text('Sign In with Google'),
             ),
           ],
         ),

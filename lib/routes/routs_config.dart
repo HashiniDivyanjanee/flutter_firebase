@@ -7,6 +7,7 @@ import 'package:flutter_firebase/presentation/screen/login.dart';
 import 'package:flutter_firebase/presentation/screen/sign_up.dart';
 import 'package:flutter_firebase/presentation/screen/start_screen.dart';
 import 'package:flutter_firebase/presentation/screen/test.dart';
+import 'package:flutter_firebase/presentation/screen/test1.dart';
 import 'package:flutter_firebase/repository/data_repository.dart';
 import 'package:flutter_firebase/routes/rout_cons.dart';
 import 'package:go_router/go_router.dart';
@@ -36,29 +37,36 @@ final GoRouter router = GoRouter(
           child: Home(),
         ),
       ),
-       GoRoute(
+      GoRoute(
         name: AppRoutesConstants.login,
         path: '/login',
-         pageBuilder: (context, state) {
-          return MaterialPage(child: Login());
-        },
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthBloc(),
+          child: Login(),
+        ),
       ),
       GoRoute(
         name: AppRoutesConstants.sign_up,
         path: '/sign_up',
-         pageBuilder: (context, state) {
-          return MaterialPage(child: SignUp());
-        },
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthBloc(),
+          child: SignUp(),
+        ),
       ),
-       GoRoute(
+      GoRoute(
         name: AppRoutesConstants.test1,
         path: '/test1',
-         builder: (context, state) => BlocProvider(
+        builder: (context, state) => BlocProvider(
           create: (context) => AuthBloc(),
           child: SignUpScreen(),
         ),
-        //  pageBuilder: (context, state) {
-        //   return MaterialPage(child: SignUpScreen());
-        // },
       ),
+      GoRoute(
+        name: AppRoutesConstants.test2,
+        path: '/test2',
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthBloc(),
+          child: SignInScreen(),
+        ),
+      )
     ]);

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_firebase/bloc/auth/auth_bloc.dart';
 import 'package:flutter_firebase/constant/assest_path.dart';
 import 'package:flutter_firebase/constant/themes.dart';
 import 'package:flutter_firebase/presentation/widget/bg_clip_path_widget.dart';
@@ -14,7 +16,7 @@ import 'package:go_router/go_router.dart';
 class SignUp extends StatelessWidget {
   SignUp({super.key});
 
-  final nameController = TextEditingController();
+  final emailController = TextEditingController();
   final pwController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -38,16 +40,7 @@ class SignUp extends StatelessWidget {
               height: 20,
             ),
             TextFormFieldComponent(
-              controller: nameController,
-              lableText: "Full Name",
-              suffixIcon: Icons.person,
-              inputType: TextInputType.name,
-              textCapitalization: TextCapitalization.words,
-              obscureText: false,
-              maxLines: 1,
-            ),
-            TextFormFieldComponent(
-              controller: nameController,
+              controller: emailController,
               lableText: "Email Address",
               suffixIcon: Icons.email,
               inputType: TextInputType.emailAddress,
@@ -67,20 +60,45 @@ class SignUp extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ButtonComponent(
-                buttonText: "SIGN UP",
-                textColor: Colors.white,
-                buttonColor: AppThemes.PrimaryColor,
-                callback: () {
+            BlocConsumer<AuthBloc, AuthState>(
+              listener: (context, state) {
+                if (state is AuthFailure) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(state.message)),
+                  );
+                } else if (state is AuthSuccess) {
                   GoRouter.of(context).pushNamed(AppRoutesConstants.home);
-                }),
+                }
+              },
+              builder: (context, state) {
+                if (state is AuthLoading) {
+                  return CircularProgressIndicator();
+                }
+                return ButtonComponent(
+                    buttonText: "SIGN UP",
+                    textColor: Colors.white,
+                    buttonColor: AppThemes.PrimaryColor,
+                    callback: () {
+                      context.read<AuthBloc>().add(
+                            SignUpWithEmail(
+                              emailController.text,
+                              pwController.text,
+                            ),
+                          );
+                    });
+              },
+            ),
             SizedBox(
               height: 20,
             ),
             subTitle(
                 title:
                     "------------------------------------OR------------------------------------"),
-            CustomIconButton(),
+            CustomIconButton(
+              callback: () {
+                context.read<AuthBloc>().add(SignInWithGoogle());
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
