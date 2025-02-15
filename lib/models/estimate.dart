@@ -26,9 +26,9 @@ class EstimateItem {
         'Brand': Brand,
         'Model': Model,
         'licensePlate': licensePlate,
-        'DateTime': FieldValue.serverTimestamp(),
         'Customer': Customer,
         'CustPhone': CustPhone,
+        'DateTime': FieldValue.serverTimestamp(),
       };
 
   factory EstimateItem.fromJson(Map<String, dynamic> json, String Eid) =>
