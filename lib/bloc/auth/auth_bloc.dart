@@ -12,6 +12,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignInWithEmail>(_onSignInWithEmail);
     on<SignUpWithEmail>(_onSignUpWithEmail);
     on<SignInWithGoogle>(_onsignInWithGoogle);
+    on<SignOut>(_onSignOut);
   }
 
   Future<void> _onSignInWithEmail(

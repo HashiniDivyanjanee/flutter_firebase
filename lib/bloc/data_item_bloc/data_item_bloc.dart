@@ -20,7 +20,6 @@ class DataItemBloc extends Bloc<DataItemEvent, DataItemState> {
   Future<void> _saveData(
       SaveDataEvent event, Emitter<DataItemState> emit) async {
     emit(DataLoading());
-
     try {
       await repository.saveData(event.title, event.description);
       emit(DataSuccess(await repository.loadData()));
@@ -33,7 +32,6 @@ class DataItemBloc extends Bloc<DataItemEvent, DataItemState> {
   Future<void> _loadData(
       LoadDataEvent event, Emitter<DataItemState> emit) async {
     emit(DataLoading());
-
     try {
       final items = await repository.loadData();
       emit(DataSuccess(items));
@@ -53,7 +51,7 @@ class DataItemBloc extends Bloc<DataItemEvent, DataItemState> {
       emit(DataError(e.toString()));
     }
   }
-  
+
 // **Update** //
   Future<void> _editData(
       EditDataEvent event, Emitter<DataItemState> emit) async {

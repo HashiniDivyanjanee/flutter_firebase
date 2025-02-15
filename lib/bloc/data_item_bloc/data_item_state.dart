@@ -21,7 +21,6 @@ class DataSuccess extends DataItemState {
 
 class DataError extends DataItemState {
   final String message;
-
   DataError(this.message);
 
   @override
