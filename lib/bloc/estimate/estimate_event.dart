@@ -32,6 +32,7 @@ class LoadEstimate extends EstimateEvent {}
 
 // *** Update Estimate *** //
 class UpdateEstimate extends EstimateEvent {
+  final String id;
   final String JobType;
   final String VehicleType;
   final String Brand;
@@ -40,7 +41,7 @@ class UpdateEstimate extends EstimateEvent {
   final String Customer;
   final String CustPhone;
 
-  UpdateEstimate(
+  UpdateEstimate(this.id, 
       {required this.JobType,
       required this.VehicleType,
       required this.Brand,
