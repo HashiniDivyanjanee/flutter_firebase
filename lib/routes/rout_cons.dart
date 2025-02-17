@@ -4,4 +4,6 @@ class AppRoutesConstants {
   static const String login = '/login';
   static const String sign_up = '/sign_up';
   static const String dashboard = '/dashboard';
+  static const String jobRegister = '/jobRegister';
+  static const String customer = '/customer';
 }

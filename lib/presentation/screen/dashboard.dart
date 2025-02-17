@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase/presentation/widget/app_bar_widget.dart';
 import 'package:flutter_firebase/presentation/widget/bottom_navigation_bar.dart';
 import 'package:flutter_firebase/presentation/widget/card_widget.dart';
+import 'package:flutter_firebase/routes/rout_cons.dart';
+import 'package:go_router/go_router.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -78,9 +80,17 @@ Widget Card1(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Card_Widget(
-          cardname: 'CUSTOMER', card_icon: Icons.person, callback: () {}),
+          cardname: 'CUSTOMER',
+          card_icon: Icons.person,
+          callback: () {
+            GoRouter.of(context).pushNamed(AppRoutesConstants.customer);
+          }),
       Card_Widget(
-          cardname: 'NEW JOB', card_icon: Icons.pest_control, callback: () {}),
+          cardname: 'NEW JOB',
+          card_icon: Icons.pest_control,
+          callback: () {
+            GoRouter.of(context).pushNamed(AppRoutesConstants.jobRegister);
+          }),
     ],
   );
 }

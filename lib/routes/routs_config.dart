@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/bloc/auth/auth_bloc.dart';
 import 'package:flutter_firebase/bloc/data_item_bloc/data_item_bloc.dart';
+import 'package:flutter_firebase/presentation/screen/customer.dart';
 import 'package:flutter_firebase/presentation/screen/dashboard.dart';
 import 'package:flutter_firebase/presentation/screen/home.dart';
+import 'package:flutter_firebase/presentation/screen/job_register_tab.dart';
 import 'package:flutter_firebase/presentation/screen/login.dart';
 import 'package:flutter_firebase/presentation/screen/sign_up.dart';
 import 'package:flutter_firebase/presentation/screen/start_screen.dart';
@@ -57,6 +59,20 @@ final GoRouter router = GoRouter(
         path: '/dashboard',
         pageBuilder: (context, state) {
           return MaterialPage(child: Dashboard());
+        },
+      ),
+      GoRoute(
+        name: AppRoutesConstants.jobRegister,
+        path: '/jobRegister',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: JobRegister());
+        },
+      ),
+       GoRoute(
+        name: AppRoutesConstants.customer,
+        path: '/customer',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: Customer());
         },
       ),
     ]);
