@@ -1,12 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_firebase/models/customer.dart';
-
+import 'package:flutter_firebase/repository/customer_repo.dart';
 part 'customer_event.dart';
 part 'customer_state.dart';
 
 class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
-  CustomerBloc() : super(CustomerInitial()) {
+  final CustomerRepository customer_repo;
+
+  CustomerBloc(this.customer_repo) : super(CustomerInitial()) {
     on<SaveCustomerEvent>(_saveCustomer);
     on<UpdateCustomerEvent>(_updateCustomer);
     on<LoadCustomerEvent>(_loadCustomer);
@@ -14,13 +16,39 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
   }
 
   Future<void> _saveCustomer(
-      SaveCustomerEvent event, Emitter<CustomerState> emit) async {}
+      SaveCustomerEvent event, Emitter<CustomerState> emit) async {
+    emit(CustomerLoading());
+    try {
+      await customer_repo.saveCustomer(
+          event.name, event.nic, event.phone, event.landline, event.address);
+      emit(CustomerSucces(await customer_repo.loadCustomer()));
+    } catch (e) {
+      emit(CustomerError(e.toString()));
+    }
+  }
 
   Future<void> _updateCustomer(
-      UpdateCustomerEvent event, Emitter<CustomerState> emit) async {}
+      UpdateCustomerEvent event, Emitter<CustomerState> emit) async {
+    emit(CustomerLoading());
+    try {
+      await customer_repo.updateCustomer(event.cid, event.name, event.nic,
+          event.phone, event.landline, event.address);
+      emit(CustomerSucces(await customer_repo.loadCustomer()));
+    } catch (e) {
+      emit(CustomerError(e.toString()));
+    }
+  }
 
   Future<void> _loadCustomer(
-      LoadCustomerEvent event, Emitter<CustomerState> emit) async {}
+      LoadCustomerEvent event, Emitter<CustomerState> emit) async {
+    emit(CustomerLoading());
+    try {
+      final customers = await customer_repo.loadCustomer();
+      emit(CustomerSucces(customers));
+    } catch (e) {
+      emit(CustomerError(e.toString()));
+    }
+  }
 
   Future<void> _deleteCustomer(
       DeleteCustomerEvent event, Emitter<CustomerState> emit) async {}

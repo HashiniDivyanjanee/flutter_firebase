@@ -5,6 +5,7 @@ class CustomerRepository {
   final CollectionReference _custCollection =
       FirebaseFirestore.instance.collection('customer');
 
+// **Save Customer** //
   Future<void> saveCustomer(
     String name,
     String nic,
@@ -21,6 +22,7 @@ class CustomerRepository {
         .toJson());
   }
 
+// **Load Customer** //
   Future<List<Customer>> loadCustomer() async {
     final snapshot = await _custCollection.orderBy('cid').get();
     return snapshot.docs
@@ -29,6 +31,7 @@ class CustomerRepository {
         .toList();
   }
 
+// **Update Customer** //
   Future<void> updateCustomer(
     String cid,
     String name,
@@ -46,6 +49,7 @@ class CustomerRepository {
     });
   }
 
+// **Delete Customer** //
   Future<void> deleteCustomer(String cid) async {
     await _custCollection.doc(cid).delete();
   }

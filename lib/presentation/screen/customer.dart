@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/constant/themes.dart';
 import 'package:flutter_firebase/presentation/widget/app_bar_widget.dart';
 import 'package:flutter_firebase/presentation/widget/buttons.dart';
 import 'package:flutter_firebase/presentation/widget/main_title_widget.dart';
 import 'package:flutter_firebase/presentation/widget/second_title.dart';
 import 'package:flutter_firebase/presentation/widget/text_form_field.dart';
-
 
 class Customer extends StatefulWidget {
   const Customer({super.key});
