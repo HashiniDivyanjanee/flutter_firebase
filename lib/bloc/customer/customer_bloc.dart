@@ -7,8 +7,21 @@ part 'customer_state.dart';
 
 class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
   CustomerBloc() : super(CustomerInitial()) {
-    on<CustomerEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<SaveCustomerEvent>(_saveCustomer);
+    on<UpdateCustomerEvent>(_updateCustomer);
+    on<LoadCustomerEvent>(_loadCustomer);
+    on<DeleteCustomerEvent>(_deleteCustomer);
   }
+
+  Future<void> _saveCustomer(
+      SaveCustomerEvent event, Emitter<CustomerState> emit) async {}
+
+  Future<void> _updateCustomer(
+      UpdateCustomerEvent event, Emitter<CustomerState> emit) async {}
+
+  Future<void> _loadCustomer(
+      LoadCustomerEvent event, Emitter<CustomerState> emit) async {}
+
+  Future<void> _deleteCustomer(
+      DeleteCustomerEvent event, Emitter<CustomerState> emit) async {}
 }
