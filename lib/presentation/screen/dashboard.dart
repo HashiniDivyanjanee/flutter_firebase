@@ -69,7 +69,11 @@ Widget Card2(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Card_Widget(
-          cardname: 'JOB LIST', card_icon: Icons.text_snippet, callback: () {}),
+          cardname: 'JOB LIST',
+          card_icon: Icons.text_snippet,
+          callback: () {
+            GoRouter.of(context).pushNamed(AppRoutesConstants.customer);
+          }),
       Card_Widget(cardname: 'TEST 2', card_icon: Icons.image, callback: () {}),
     ],
   );
