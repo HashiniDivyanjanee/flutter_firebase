@@ -21,7 +21,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
     try {
       await customer_repo.saveCustomer(
           event.name, event.nic, event.phone, event.landline, event.address);
-      emit(CustomerSucces(await customer_repo.loadCustomer()));
+      emit(CustomerSuccess(await customer_repo.loadCustomer()));
     } catch (e) {
       emit(CustomerError(e.toString()));
     }
@@ -33,7 +33,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
     try {
       await customer_repo.updateCustomer(event.cid, event.name, event.nic,
           event.phone, event.landline, event.address);
-      emit(CustomerSucces(await customer_repo.loadCustomer()));
+      emit(CustomerSuccess(await customer_repo.loadCustomer()));
     } catch (e) {
       emit(CustomerError(e.toString()));
     }
@@ -44,7 +44,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
     emit(CustomerLoading());
     try {
       final customers = await customer_repo.loadCustomer();
-      emit(CustomerSucces(customers));
+      emit(CustomerSuccess(customers));
     } catch (e) {
       emit(CustomerError(e.toString()));
     }
@@ -55,7 +55,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
         emit(CustomerLoading());
         try {
           await customer_repo.deleteCustomer(event.cid);
-          emit(CustomerSucces(await customer_repo.loadCustomer()));
+          emit(CustomerSuccess(await customer_repo.loadCustomer()));
         } catch (e) {
           emit(CustomerError(e.toString()));
         }

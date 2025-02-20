@@ -11,9 +11,9 @@ final class CustomerInitial extends CustomerState {}
 
 class CustomerLoading extends CustomerState{}
 
-class CustomerSucces extends CustomerState{
+class CustomerSuccess extends CustomerState{
    final List<Customer> customer;
-   CustomerSucces(this.customer);
+   CustomerSuccess(this.customer);
 
    @override
   List<Object> get props => [customer];
