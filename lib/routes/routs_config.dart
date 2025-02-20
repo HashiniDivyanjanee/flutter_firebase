@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/bloc/auth/auth_bloc.dart';
+import 'package:flutter_firebase/bloc/customer/customer_bloc.dart';
 import 'package:flutter_firebase/bloc/data_item_bloc/data_item_bloc.dart';
 import 'package:flutter_firebase/presentation/screen/customer.dart';
 import 'package:flutter_firebase/presentation/screen/dashboard.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_firebase/presentation/screen/job_register_tab.dart';
 import 'package:flutter_firebase/presentation/screen/login.dart';
 import 'package:flutter_firebase/presentation/screen/sign_up.dart';
 import 'package:flutter_firebase/presentation/screen/start_screen.dart';
+import 'package:flutter_firebase/repository/customer_repo.dart';
 import 'package:flutter_firebase/repository/data_repository.dart';
 import 'package:flutter_firebase/routes/rout_cons.dart';
 import 'package:go_router/go_router.dart';
@@ -71,8 +73,9 @@ final GoRouter router = GoRouter(
        GoRoute(
         name: AppRoutesConstants.customer,
         path: '/customer',
-        pageBuilder: (context, state) {
-          return MaterialPage(child: Customer());
-        },
+      builder: (context, state) => BlocProvider(
+          create: (context) => CustomerBloc(CustomerRepository()),
+          child: Customer(),
+        ),
       ),
     ]);

@@ -13,18 +13,20 @@ class CustomerRepository {
     String landline,
     String address,
   ) async {
-    await _custCollection.add(Customer(
-            name: name,
-            nic: nic,
-            phone: phone,
-            landline: landline,
-            address: address)
-        .toJson());
+    DocumentReference docRef = await _custCollection.add({
+      'name': name,
+      'nic': nic,
+      'phone': phone,
+      'landline': landline,
+      'address': address
+    });
+
+    await docRef.update({'cid': docRef.id});
   }
 
 // **Load Customer** //
   Future<List<Customer>> loadCustomer() async {
-    final snapshot = await _custCollection.orderBy('cid').get();
+    final snapshot = await _custCollection.get();
     return snapshot.docs
         .map((doc) =>
             Customer.fromJson(doc.data() as Map<String, dynamic>, doc.id))

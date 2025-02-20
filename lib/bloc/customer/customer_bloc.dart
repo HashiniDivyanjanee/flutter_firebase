@@ -51,5 +51,13 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
   }
 
   Future<void> _deleteCustomer(
-      DeleteCustomerEvent event, Emitter<CustomerState> emit) async {}
+      DeleteCustomerEvent event, Emitter<CustomerState> emit) async {
+        emit(CustomerLoading());
+        try {
+          await customer_repo.deleteCustomer(event.cid);
+          emit(CustomerSucces(await customer_repo.loadCustomer()));
+        } catch (e) {
+          emit(CustomerError(e.toString()));
+        }
+      }
 }

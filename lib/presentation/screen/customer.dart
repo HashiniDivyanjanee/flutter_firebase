@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_firebase/bloc/customer/customer_bloc.dart';
 import 'package:flutter_firebase/constant/themes.dart';
 import 'package:flutter_firebase/presentation/widget/app_bar_widget.dart';
 import 'package:flutter_firebase/presentation/widget/buttons.dart';
@@ -12,6 +14,7 @@ class Customer extends StatefulWidget {
   @override
   State<Customer> createState() => _CustomerState();
 }
+
 class _CustomerState extends State<Customer> {
   final TextEditingController Customer_NameController = TextEditingController();
   final TextEditingController Customer_PhoneController =
@@ -21,13 +24,13 @@ class _CustomerState extends State<Customer> {
   final TextEditingController Customer_AddressController =
       TextEditingController();
 
-clear(){
-  Customer_AddressController.clear();
-  Customer_LandController.clear();
-  Customer_NameController.clear();
-  Customer_NicController.clear();
-  Customer_PhoneController.clear();
-}
+  clear() {
+    Customer_AddressController.clear();
+    Customer_LandController.clear();
+    Customer_NameController.clear();
+    Customer_NicController.clear();
+    Customer_PhoneController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +81,6 @@ clear(){
               obscureText: false,
               suffixIcon: Icons.phone,
               inputType: TextInputType.phone,
-          
             ),
             const SizedBox(
               height: 5,
@@ -110,8 +112,14 @@ clear(){
                 textColor: Colors.white,
                 buttonColor: AppThemes.PrimaryColor,
                 callback: () {
-                  
-                }),               
+                  context.read<CustomerBloc>().add(SaveCustomerEvent(
+                      Customer_NameController.text,
+                      Customer_NicController.text,
+                      Customer_PhoneController.text,
+                      Customer_LandController.text,
+                      Customer_AddressController.text));
+                  clear();
+                }),
           ],
         ),
       )),
