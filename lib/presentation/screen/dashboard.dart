@@ -72,7 +72,7 @@ Widget Card2(BuildContext context) {
           cardname: 'JOB LIST',
           card_icon: Icons.text_snippet,
           callback: () {
-            GoRouter.of(context).pushNamed(AppRoutesConstants.customer);
+            GoRouter.of(context).pushNamed(AppRoutesConstants.customer_view);
           }),
       Card_Widget(cardname: 'TEST 2', card_icon: Icons.image, callback: () {}),
     ],

@@ -6,4 +6,6 @@ class AppRoutesConstants {
   static const String dashboard = '/dashboard';
   static const String jobRegister = '/jobRegister';
   static const String customer = '/customer';
+  static const String customer_view = '/customer_view';
+
 }
