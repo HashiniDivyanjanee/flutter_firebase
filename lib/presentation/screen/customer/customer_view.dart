@@ -26,9 +26,8 @@ class _CustomerViewState extends State<CustomerView> {
             return ListItemWidget(data: state.customer[index]);
           });
         } else if (state is CustomerError) {
-          return Center(child: Text("data"));
+          return Center(child: Text('Error: ${state.message}'));
         }
-
         return Text("data");
       }),
     );

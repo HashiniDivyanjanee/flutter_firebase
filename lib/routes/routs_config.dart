@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/bloc/auth/auth_bloc.dart';
 import 'package:flutter_firebase/bloc/customer/customer_bloc.dart';
 import 'package:flutter_firebase/bloc/data_item_bloc/data_item_bloc.dart';
-import 'package:flutter_firebase/presentation/screen/customer.dart';
+import 'package:flutter_firebase/presentation/screen/customer/customer.dart';
 import 'package:flutter_firebase/presentation/screen/customer/customer_view.dart';
 import 'package:flutter_firebase/presentation/screen/dashboard.dart';
 import 'package:flutter_firebase/presentation/screen/home.dart';
