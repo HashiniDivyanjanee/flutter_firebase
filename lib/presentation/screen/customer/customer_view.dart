@@ -12,6 +12,11 @@ class CustomerView extends StatefulWidget {
 }
 
 class _CustomerViewState extends State<CustomerView> {
+  void initState() {
+    super.initState();
+    BlocProvider.of<CustomerBloc>(context).add(LoadCustomerEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +27,15 @@ class _CustomerViewState extends State<CustomerView> {
         if (state is CustomerLoading) {
           return Center(child: CircularProgressIndicator());
         } else if (state is CustomerSuccess) {
-          return ListView.builder(itemBuilder: (context, index) {
-            return ListItemWidget(data: state.customer[index]);
-          });
+          return ListView.builder(
+              itemCount: state.customer.length,
+              itemBuilder: (context, index) {
+                return ListItemWidget(data: state.customer[index]);
+              });
         } else if (state is CustomerError) {
           return Center(child: Text('Error: ${state.message}'));
         }
-        return Text("data");
+         return Center(child: Text("No data available"));
       }),
     );
   }
