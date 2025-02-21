@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/presentation/widget/clip_path_widgets.dart';
+import 'package:flutter_firebase/widget/clip_path_widgets.dart';
 
 class BgClipPathWidget extends StatelessWidget {
   final ImageProvider image;

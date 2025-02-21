@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/presentation/widget/app_bar_widget.dart';
-import 'package:flutter_firebase/presentation/widget/bottom_navigation_bar.dart';
-import 'package:flutter_firebase/presentation/widget/card_widget.dart';
+import 'package:flutter_firebase/widget/app_bar_widget.dart';
+import 'package:flutter_firebase/widget/bottom_navigation_bar.dart';
+import 'package:flutter_firebase/widget/card_widget.dart';
 import 'package:flutter_firebase/routes/rout_cons.dart';
 import 'package:go_router/go_router.dart';
 

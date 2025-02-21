@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/presentation/widget/drop_down_list.dart';
-import 'package:flutter_firebase/presentation/widget/main_title_widget.dart';
-import 'package:flutter_firebase/presentation/widget/second_title.dart';
-import 'package:flutter_firebase/presentation/widget/select_date_field.dart';
-import 'package:flutter_firebase/presentation/widget/text_form_field.dart';
+import 'package:flutter_firebase/widget/drop_down_list.dart';
+import 'package:flutter_firebase/widget/main_title_widget.dart';
+import 'package:flutter_firebase/widget/second_title.dart';
+import 'package:flutter_firebase/widget/select_date_field.dart';
+import 'package:flutter_firebase/widget/text_form_field.dart';
 
 class JobRegister extends StatefulWidget {
   JobRegister({super.key});
